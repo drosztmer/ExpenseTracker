@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'kotlin-android-extensions'
     id 'dagger.hilt.android.plugin'
     id 'androidx.navigation.safeargs.kotlin'
 }
@@ -32,6 +33,11 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        dataBinding = true
+        viewBinding = true
     }
 }
 
@@ -72,4 +78,5 @@ dependencies {
     kapt "androidx.room:room-compiler:2.2.6"
     implementation "androidx.room:room-ktx:2.2.6"
     androidTestImplementation "androidx.room:room-testing:2.2.6"
+
 }
