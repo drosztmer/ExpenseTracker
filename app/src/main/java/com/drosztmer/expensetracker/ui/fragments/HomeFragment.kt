@@ -46,7 +46,8 @@ class HomeFragment : Fragment() {
             expenseAdapter.setData(data)
         })
         mainViewModel.getSum.observe(viewLifecycleOwner, { data ->
-            val totalText = "$data Ft"
+            val sum = data ?: 0
+            val totalText = "$sum Ft"
             binding.totalText.text = totalText
         })
     }
