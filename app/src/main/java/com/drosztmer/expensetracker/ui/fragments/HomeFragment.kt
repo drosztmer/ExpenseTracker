@@ -70,6 +70,7 @@ class HomeFragment : Fragment() {
         inflater.inflate(R.menu.home_fragment_menu, menu)
     }
 
+    // Call appropriate function when selecting menuitem
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_delete_all -> confirmRemoval()
@@ -77,6 +78,7 @@ class HomeFragment : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
+    // Show alert dialog to confirm deleting all expenses
     private fun confirmRemoval() {
         val builder = AlertDialog.Builder(requireContext())
         builder.setPositiveButton(getString(R.string.yes)) { _, _ ->
