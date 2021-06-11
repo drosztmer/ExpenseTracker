@@ -15,9 +15,11 @@ import com.drosztmer.expensetracker.data.model.Expense
 import com.drosztmer.expensetracker.databinding.FragmentCreateExpenseBinding
 import com.drosztmer.expensetracker.viewmodels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import java.util.*
 
 @AndroidEntryPoint
 class CreateExpenseFragment : Fragment() {
@@ -28,7 +30,6 @@ class CreateExpenseFragment : Fragment() {
 
     private val mainViewModel: MainViewModel by viewModels()
 
-    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,11 +44,11 @@ class CreateExpenseFragment : Fragment() {
     }
 
     // Inserting the new data to database
-    @RequiresApi(Build.VERSION_CODES.O)
     private fun insertDataToDb() {
         // Getting data for creation of new entry to database
-        val timeFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd")
-        var timeCreated = LocalDate.parse(LocalDate.now().toString(), timeFormat).toString()
+        var date = Date()
+        val formatter = SimpleDateFormat("yyyy.MM.dd.")
+        var timeCreated = formatter.format(date)
         val title = binding.titleEdittext.text.toString()
         val amountText = binding.priceEdittext.text.toString()
         val validation = verifyDataFromUser(title, amountText)
