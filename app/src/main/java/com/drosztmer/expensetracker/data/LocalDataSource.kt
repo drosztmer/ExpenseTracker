@@ -17,6 +17,10 @@ class LocalDataSource @Inject constructor(
         expenseDao.deleteExpense(expense)
     }
 
+    suspend fun updateExpense(expense: Expense) {
+        expenseDao.updateData(expense)
+    }
+
     fun readExpenses(): Flow<List<Expense>> {
         return expenseDao.readExpenses()
     }
