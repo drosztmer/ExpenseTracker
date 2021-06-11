@@ -22,6 +22,7 @@ import java.time.format.DateTimeFormatter
 @AndroidEntryPoint
 class CreateExpenseFragment : Fragment() {
 
+    // Variables for using data binding
     private var _binding: FragmentCreateExpenseBinding? = null
     private val binding get() = _binding!!
 
@@ -41,14 +42,17 @@ class CreateExpenseFragment : Fragment() {
         return binding.root
     }
 
+    // Inserting the new data to database
     @RequiresApi(Build.VERSION_CODES.O)
     private fun insertDataToDb() {
+        // Getting data for creation of new entry to database
         val timeFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd")
         var timeCreated = LocalDate.parse(LocalDate.now().toString(), timeFormat).toString()
         val title = binding.titleEdittext.text.toString()
         val amountText = binding.priceEdittext.text.toString()
         val validation = verifyDataFromUser(title, amountText)
 
+        // Checking if user didn't leave anything blank, then inserting new entry to database
         if (validation) {
             val newExpense = Expense(0, timeCreated, title, amountText.toInt())
             mainViewModel.insertExpense(newExpense)
@@ -59,8 +63,15 @@ class CreateExpenseFragment : Fragment() {
         }
     }
 
+    // Function to make sure that the user doesn't leave anything blank
     private fun verifyDataFromUser(title: String, amount: String): Boolean {
         return !(title.isEmpty() || amount.isEmpty())
+    }
+
+    // Making binding null to avoid memory leak
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }

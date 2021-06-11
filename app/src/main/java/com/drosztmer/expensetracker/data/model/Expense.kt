@@ -5,6 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 
+// Entity for the table
 @Entity(tableName = "expense_table")
 @Parcelize
 data class Expense(

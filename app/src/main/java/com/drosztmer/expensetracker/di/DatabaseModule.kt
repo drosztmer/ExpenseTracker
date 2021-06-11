@@ -11,6 +11,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
+// Module for setting up dependencies for injection
 @Module
 @InstallIn(SingletonComponent::class)
 object DatabaseModule {

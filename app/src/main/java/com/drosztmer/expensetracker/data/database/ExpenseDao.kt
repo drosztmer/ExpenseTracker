@@ -4,6 +4,7 @@ import androidx.room.*
 import com.drosztmer.expensetracker.data.model.Expense
 import kotlinx.coroutines.flow.Flow
 
+// Dao for operations on the table
 @Dao
 interface ExpenseDao {
 

@@ -15,6 +15,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
 
+    // Variables for using data binding
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
@@ -39,6 +40,7 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
+    // Function for observing the viewmodel and setting the appropriate data for the adapter and views
     private fun observeViewModel() {
         mainViewModel.getAllExpenses.observe(viewLifecycleOwner, { data ->
             expenseAdapter.setData(data)
@@ -49,6 +51,7 @@ class HomeFragment : Fragment() {
         })
     }
 
+    // Setting up recyclerview with it's adapter and layoutmanager
     private fun setupRecyclerView() {
         val recyclerView = binding.recyclerView
         recyclerView.apply {
@@ -57,10 +60,12 @@ class HomeFragment : Fragment() {
         }
     }
 
+    // Inflating the menu with the delete all option
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.home_fragment_menu, menu)
     }
 
+    // Making binding null to avoid memory leak
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

@@ -5,6 +5,7 @@ import com.drosztmer.expensetracker.data.model.Expense
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
+// LocalDataSource for organizing functions on the local data source (there would be a RemoteDataSource class for network calls)
 class LocalDataSource @Inject constructor(
     private val expenseDao: ExpenseDao
 ) {
