@@ -21,7 +21,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:text="@string/total"
-            android:textColor="@color/black"
+            android:textColor="@color/darkGray"
             android:textSize="@dimen/total_size"
             android:textStyle="bold" />
 
@@ -33,7 +33,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             tools:text="40000 Ft"
-            android:textColor="@color/black"
+            android:textColor="@color/darkGray"
             android:textSize="@dimen/total_text_size"
             android:textStyle="bold" />
 
@@ -42,6 +42,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:clipToPadding="false"
+            android:layout_marginHorizontal="@dimen/margin_small"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

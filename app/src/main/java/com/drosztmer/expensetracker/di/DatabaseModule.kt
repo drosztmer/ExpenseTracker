@@ -3,7 +3,7 @@ package com.drosztmer.expensetracker.di
 import android.content.Context
 import androidx.room.Room
 import com.drosztmer.expensetracker.data.database.ExpenseDatabase
-import com.drosztmer.expensetracker.util.Constants.Companion.DATABASE_NAME
+import com.drosztmer.expensetracker.util.Constants.DATABASE_NAME
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

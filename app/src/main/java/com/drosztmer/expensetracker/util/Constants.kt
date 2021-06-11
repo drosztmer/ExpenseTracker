@@ -1,10 +1,7 @@
 package com.drosztmer.expensetracker.util
 
-class Constants {
+object Constants {
 
-    companion object {
+    const val DATABASE_NAME = "expense_database"
 
-        const val DATABASE_NAME = "expense_database"
-
-    }
 }
