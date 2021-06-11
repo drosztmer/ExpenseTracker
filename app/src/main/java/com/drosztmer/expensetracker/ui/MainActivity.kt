@@ -1,7 +1,8 @@
-package com.drosztmer.expensetracker
+package com.drosztmer.expensetracker.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.drosztmer.expensetracker.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
