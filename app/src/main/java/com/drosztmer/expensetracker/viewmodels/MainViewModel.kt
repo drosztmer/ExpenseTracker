@@ -4,6 +4,7 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.*
 import com.drosztmer.expensetracker.data.Repository
+import com.drosztmer.expensetracker.data.model.Currency
 import com.drosztmer.expensetracker.data.model.Expense
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -19,6 +20,7 @@ class MainViewModel @Inject constructor(
 ) : AndroidViewModel(application) {
 
     val getAllExpenses: LiveData<List<Expense>> = repository.local.readExpenses().asLiveData()
+    val currencyLiveData: MutableLiveData<Currency> = MutableLiveData(Currency.HUF)
     val getSum: MediatorLiveData<BigDecimal> = MediatorLiveData()
 
     val emptyDatabase: MutableLiveData<Boolean> = MutableLiveData(false)
@@ -41,6 +43,12 @@ class MainViewModel @Inject constructor(
     fun updateExpense(expense: Expense) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.local.updateExpense(expense)
+        }
+    }
+
+    fun updateCurrency(currency: Currency) {
+        viewModelScope.launch(Dispatchers.IO) {
+            currencyLiveData.postValue(currency)
         }
     }
 

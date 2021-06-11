@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.drosztmer.expensetracker.R
 import com.drosztmer.expensetracker.adapters.ExpenseAdapter
+import com.drosztmer.expensetracker.data.model.Currency
 import com.drosztmer.expensetracker.databinding.FragmentHomeBinding
 import com.drosztmer.expensetracker.viewmodels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -53,10 +54,16 @@ class HomeFragment : Fragment() {
             }
         })
         mainViewModel.getSum.observe(viewLifecycleOwner, { sum ->
-            val totalText = "${sum.toPlainString()} Ft"
-            binding.totalText.text = totalText
+            val currency = mainViewModel.currencyLiveData.value ?: Currency.HUF
+            binding.totalText.text = currency.convertPrice(sum)
         })
-
+        mainViewModel.currencyLiveData.observe(viewLifecycleOwner, { currency ->
+            expenseAdapter.updateCurrency(currency)
+            val divide = mainViewModel.getSum.value
+            divide?.let {
+                binding.totalText.text = currency.convertPrice(divide)
+            }
+        })
     }
 
     // Setting up recyclerview with it's adapter and layoutmanager
@@ -77,6 +84,8 @@ class HomeFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_delete_all -> confirmRemoval()
+            R.id.huf -> mainViewModel.updateCurrency(Currency.HUF)
+            R.id.eur -> mainViewModel.updateCurrency(Currency.EUR)
         }
         return super.onOptionsItemSelected(item)
     }

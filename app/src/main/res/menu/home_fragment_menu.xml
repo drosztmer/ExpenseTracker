@@ -7,4 +7,14 @@
         android:title="@string/delete_all"
         app:showAsAction="never" />
 
+    <item
+        android:id="@+id/huf"
+        android:title="@string/huf"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/eur"
+        android:title="@string/eur"
+        app:showAsAction="never" />
+
 </menu>

@@ -4,19 +4,21 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.drosztmer.expensetracker.data.model.Currency
 import com.drosztmer.expensetracker.data.model.Expense
 import com.drosztmer.expensetracker.databinding.ListItemBinding
 
 // Adapter to create viewholders and connects them with the appropriate data
-class ExpenseAdapter: RecyclerView.Adapter<ExpenseAdapter.MyViewHolder>() {
+class ExpenseAdapter : RecyclerView.Adapter<ExpenseAdapter.MyViewHolder>() {
 
     var expenseList = emptyList<Expense>()
+    var currentCurrency = Currency.HUF
 
-    class MyViewHolder(private val binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class MyViewHolder(private val binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
         // Function to connect data with views by setting data binding variables
         fun bind(expense: Expense) {
-            binding.price = expense.price.toPlainString() + " Ft"
+            binding.price = currentCurrency.convertPrice(expense.price)
             binding.expense = expense
             binding.executePendingBindings()
         }
@@ -48,4 +50,10 @@ class ExpenseAdapter: RecyclerView.Adapter<ExpenseAdapter.MyViewHolder>() {
         expenseDiffResult.dispatchUpdatesTo(this)
     }
 
+    fun updateCurrency(currency: Currency) {
+        if (currency != currentCurrency) {
+            currentCurrency = currency
+            notifyDataSetChanged()
+        }
+    }
 }

@@ -4,7 +4,7 @@
     <string name="delete_all">Delete all</string>
     <string name="total">Total</string>
     <string name="title">Title</string>
-    <string name="price">Price</string>
+    <string name="price">Price (HUF)</string>
     <string name="save">Save</string>
     <string name="expense_added_succesfully">Expense added successfully!</string>
     <string name="yes">Yes</string>
@@ -14,4 +14,6 @@
     <string name="no_entries">No entries</string>
     <string name="update">Update</string>
     <string name="expanse_updated_successfully">Expense updated successfully!</string>
+    <string name="huf">HUF</string>
+    <string name="eur">EUR</string>
 </resources>
