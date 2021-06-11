@@ -34,7 +34,7 @@ class UpdateExpenseFragment : Fragment() {
     ): View {
         _binding = FragmentUpdateExpenseBinding.inflate(inflater, container, false)
         binding.args = args
-        binding.price = args.expense.price.toString()
+        binding.price = args.expense.price.toPlainString()
         binding.buttonUpdate.setOnClickListener {
             updateExpense()
         }
