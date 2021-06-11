@@ -5,14 +5,11 @@
 
     <data>
         <variable
-            name="time"
-            type="String" />
-        <variable
-            name="title"
-            type="String" />
-        <variable
             name="price"
             type="String" />
+        <variable
+            name="expense"
+            type="com.drosztmer.expensetracker.data.model.Expense" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,6 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
+        android:sendDataToUpdateFragment="@{expense}"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -35,7 +33,7 @@
             android:layout_marginEnd="@dimen/margin_medium"
             android:textColor="@color/darkGray"
             android:textSize="@dimen/text_size_time"
-            android:text="@{time}"
+            android:text="@{expense.timeCreated}"
             tools:text="2020.10.22."
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -53,7 +51,7 @@
             android:textColor="@color/darkGray"
             android:textSize="@dimen/text_size_item"
             android:textStyle="bold"
-            android:text="@{title}"
+            android:text="@{expense.title}"
             tools:text="This is the title"
             app:layout_constraintStart_toStartOf="@id/time_txt"
             app:layout_constraintTop_toBottomOf="@id/time_txt"
