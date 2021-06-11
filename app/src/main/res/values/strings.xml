@@ -5,6 +5,7 @@
     <string name="delete_all">Delete all</string>
     <string name="total">Total</string>
     <string name="title">Title</string>
-    <string name="amount">Amount</string>
+    <string name="price">Price</string>
     <string name="save">Save</string>
+    <string name="expense_Added_succesfully">Expense added successfully!</string>
 </resources>

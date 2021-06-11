@@ -14,7 +14,9 @@ class ExpenseAdapter: RecyclerView.Adapter<ExpenseAdapter.MyViewHolder>() {
     class MyViewHolder(private val binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(expense: Expense) {
-            binding.expense = expense
+            binding.time = expense.timeCreated
+            binding.title = expense.title
+            binding.price = expense.price.toString() + " Ft"
             binding.executePendingBindings()
         }
     }

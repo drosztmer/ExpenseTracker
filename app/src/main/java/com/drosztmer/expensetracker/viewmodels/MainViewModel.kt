@@ -19,6 +19,7 @@ class MainViewModel @Inject constructor(
 ): AndroidViewModel(application) {
 
     val getAllExpenses: LiveData<List<Expense>> = repository.local.readExpenses().asLiveData()
+    val getSum: LiveData<Int> = repository.local.getSum().asLiveData()
 
     fun insertExpense(expense: Expense) {
         viewModelScope.launch(Dispatchers.IO) {

@@ -28,4 +28,8 @@ class LocalDataSource @Inject constructor(
     suspend fun deleteAllExpenses() {
         expenseDao.deleteAllExpenses()
     }
+
+    fun getSum(): Flow<Int> {
+        return expenseDao.getSum()
+    }
 }

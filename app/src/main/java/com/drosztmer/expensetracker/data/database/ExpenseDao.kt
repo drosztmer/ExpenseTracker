@@ -22,4 +22,7 @@ interface ExpenseDao {
     @Query("DELETE FROM expense_table")
     suspend fun deleteAllExpenses()
 
+    @Query("SELECT SUM(price) FROM expense_table")
+    fun getSum(): Flow<Int>
+
 }

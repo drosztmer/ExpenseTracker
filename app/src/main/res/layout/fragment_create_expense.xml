@@ -27,11 +27,11 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <EditText
-        android:id="@+id/amount_edittext"
+        android:id="@+id/price_edittext"
         android:layout_width="0dp"
         android:layout_height="@dimen/amount_edittext_height"
         android:background="@color/white"
-        android:hint="@string/amount"
+        android:hint="@string/price"
         android:layout_marginTop="@dimen/margin_small"
         android:layout_marginHorizontal="@dimen/margin_small"
         android:paddingStart="@dimen/padding_big"
@@ -43,6 +43,7 @@
         app:layout_constraintTop_toBottomOf="@+id/title_edittext" />
 
     <Button
+        android:id="@+id/button_save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/margin_small"
