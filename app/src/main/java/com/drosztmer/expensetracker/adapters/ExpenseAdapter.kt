@@ -16,7 +16,7 @@ class ExpenseAdapter: RecyclerView.Adapter<ExpenseAdapter.MyViewHolder>() {
 
         // Function to connect data with views by setting data binding variables
         fun bind(expense: Expense) {
-            binding.price = expense.price.toString() + " Ft"
+            binding.price = expense.price.toPlainString() + " Ft"
             binding.expense = expense
             binding.executePendingBindings()
         }

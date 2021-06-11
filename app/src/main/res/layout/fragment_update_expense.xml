@@ -46,7 +46,7 @@
             android:layout_marginHorizontal="@dimen/margin_small"
             android:paddingStart="@dimen/padding_big"
             android:paddingEnd="@dimen/padding_big"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:text="@{price}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

@@ -53,7 +53,7 @@ class HomeFragment : Fragment() {
             }
         })
         mainViewModel.getSum.observe(viewLifecycleOwner, { sum ->
-            val totalText = "$sum Ft"
+            val totalText = "${sum.toPlainString()} Ft"
             binding.totalText.text = totalText
         })
 

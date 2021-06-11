@@ -9,6 +9,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.math.BigDecimal
+import java.math.RoundingMode
 import javax.inject.Inject
 
 @HiltViewModel
@@ -25,6 +26,7 @@ class MainViewModel @Inject constructor(
     init {
         getSum.addSource(getAllExpenses) { expenses ->
             var sum = BigDecimal.ZERO
+            sum.setScale(2, RoundingMode.CEILING).stripTrailingZeros()
             expenses?.forEach { sum = sum.add(it.price) }
             getSum.postValue(sum)
         }
