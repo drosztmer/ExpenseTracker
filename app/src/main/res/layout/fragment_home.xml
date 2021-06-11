@@ -10,6 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/blue_light"
         tools:context=".ui.fragments.HomeFragment">
 
         <TextView
@@ -21,7 +22,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:text="@string/total"
             android:textColor="@color/black"
-            android:textSize="32sp"
+            android:textSize="@dimen/total_size"
             android:textStyle="bold" />
 
         <TextView
@@ -33,14 +34,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             tools:text="40000 Ft"
             android:textColor="@color/black"
-            android:textSize="40sp"
+            android:textSize="@dimen/total_text_size"
             android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:paddingTop="16dp"
+            android:paddingTop="@dimen/padding_medium"
             android:clipToPadding="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -57,6 +58,7 @@
             android:clickable="true"
             android:focusable="true"
             android:tint="@color/white"
+            android:backgroundTint="@color/yellow_medium"
             android:src="@drawable/ic_add"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />

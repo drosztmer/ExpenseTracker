@@ -3,11 +3,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/blue_light"
     tools:context=".ui.fragments.CreateExpenseFragment">
 
-    <TextView
+    <EditText
+        android:id="@+id/title_edittext"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/title_edittext_height"
+        android:gravity="top|start"
+        android:layout_marginHorizontal="@dimen/margin_small"
+        android:layout_marginTop="@dimen/margin_small"
+        android:paddingStart="@dimen/padding_big"
+        android:paddingEnd="@dimen/padding_big"
+        android:paddingTop="@dimen/padding_medium"
+        android:hint="@string/title"
+        android:background="@color/white"
+        android:inputType="text"
+        android:maxLines="2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <EditText
+        android:id="@+id/amount_edittext"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/amount_edittext_height"
+        android:background="@color/white"
+        android:hint="@string/amount"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginHorizontal="@dimen/margin_small"
+        android:paddingStart="@dimen/padding_big"
+        android:paddingEnd="@dimen/padding_big"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_edittext" />
+
+    <Button
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Save" />
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_small"
+        android:text="@string/save"
+        android:textSize="32sp"
+        android:height="80dp"
+        android:textStyle="bold"
+        android:backgroundTint="@color/yellow_medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
