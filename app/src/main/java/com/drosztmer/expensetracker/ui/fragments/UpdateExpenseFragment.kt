@@ -31,7 +31,7 @@ class UpdateExpenseFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentUpdateExpenseBinding.inflate(inflater, container, false)
         binding.args = args
         binding.price = args.expense.price.toString()
@@ -51,7 +51,7 @@ class UpdateExpenseFragment : Fragment() {
         // Check if user didn't leave anything blank, then inserting new entry to database
         if (validation) {
             val updatedItem = Expense(
-                    args.expense.id, timeCreated, title, priceText.toInt())
+                    args.expense.id, timeCreated, title, priceText.toBigDecimal())
             mainViewModel.updateExpense(updatedItem)
             Toast.makeText(requireContext(), getString(R.string.expanse_updated_successfully), Toast.LENGTH_SHORT).show()
             findNavController().navigate(R.id.action_updateExpenseFragment_to_homeFragment)

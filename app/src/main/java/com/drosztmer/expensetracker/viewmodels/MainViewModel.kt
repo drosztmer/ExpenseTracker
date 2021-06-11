@@ -1,24 +1,34 @@
 package com.drosztmer.expensetracker.viewmodels
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.*
 import com.drosztmer.expensetracker.data.Repository
 import com.drosztmer.expensetracker.data.model.Expense
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.math.BigDecimal
 import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val repository: Repository,
-    application: Application
-): AndroidViewModel(application) {
+        private val repository: Repository,
+        application: Application
+) : AndroidViewModel(application) {
 
     val getAllExpenses: LiveData<List<Expense>> = repository.local.readExpenses().asLiveData()
-    val getSum: LiveData<Int> = repository.local.getSum().asLiveData()
+    val getSum: MediatorLiveData<BigDecimal> = MediatorLiveData()
 
     val emptyDatabase: MutableLiveData<Boolean> = MutableLiveData(false)
+
+    init {
+        getSum.addSource(getAllExpenses) { expenses ->
+            var sum = BigDecimal.ZERO
+            expenses?.forEach { sum = sum.add(it.price) }
+            getSum.postValue(sum)
+        }
+    }
 
     fun insertExpense(expense: Expense) {
         viewModelScope.launch(Dispatchers.IO) {

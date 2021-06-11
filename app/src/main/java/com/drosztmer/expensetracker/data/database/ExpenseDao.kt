@@ -3,6 +3,7 @@ package com.drosztmer.expensetracker.data.database
 import androidx.room.*
 import com.drosztmer.expensetracker.data.model.Expense
 import kotlinx.coroutines.flow.Flow
+import java.math.BigDecimal
 
 // Dao for operations on the table
 @Dao
@@ -24,6 +25,6 @@ interface ExpenseDao {
     suspend fun deleteAllExpenses()
 
     @Query("SELECT SUM(price) FROM expense_table")
-    fun getSum(): Flow<Int>
+    fun getSum(): Flow<BigDecimal>
 
 }

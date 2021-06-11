@@ -52,11 +52,11 @@ class HomeFragment : Fragment() {
                 expenseAdapter.setData(data)
             }
         })
-        mainViewModel.getSum.observe(viewLifecycleOwner, { data ->
-            val sum = data ?: 0
+        mainViewModel.getSum.observe(viewLifecycleOwner, { sum ->
             val totalText = "$sum Ft"
             binding.totalText.text = totalText
         })
+
     }
 
     // Setting up recyclerview with it's adapter and layoutmanager

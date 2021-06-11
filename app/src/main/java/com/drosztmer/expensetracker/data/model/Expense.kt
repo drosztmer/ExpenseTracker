@@ -14,5 +14,5 @@ data class Expense(
     var id: Int,
     var timeCreated: String,
     var title: String,
-    var price: Int
+    var price: BigDecimal
 ): Parcelable

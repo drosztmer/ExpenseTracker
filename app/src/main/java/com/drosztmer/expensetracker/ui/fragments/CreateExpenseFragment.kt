@@ -49,7 +49,7 @@ class CreateExpenseFragment : Fragment() {
 
         // Check if user didn't leave anything blank, then inserting new entry to database
         if (validation) {
-            val newExpense = Expense(0, timeCreated, title, priceText.toInt())
+            val newExpense = Expense(0, timeCreated, title, priceText.toBigDecimal())
             mainViewModel.insertExpense(newExpense)
             Toast.makeText(requireContext(), getString(R.string.expense_added_succesfully), Toast.LENGTH_SHORT).show()
             findNavController().navigate(R.id.action_createExpenseFragment_to_homeFragment)
