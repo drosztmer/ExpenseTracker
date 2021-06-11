@@ -1,10 +1,7 @@
 package com.drosztmer.expensetracker.viewmodels
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.asLiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.drosztmer.expensetracker.data.Repository
 import com.drosztmer.expensetracker.data.model.Expense
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,6 +17,8 @@ class MainViewModel @Inject constructor(
 
     val getAllExpenses: LiveData<List<Expense>> = repository.local.readExpenses().asLiveData()
     val getSum: LiveData<Int> = repository.local.getSum().asLiveData()
+
+    val emptyDatabase: MutableLiveData<Boolean> = MutableLiveData(false)
 
     fun insertExpense(expense: Expense) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -43,6 +42,10 @@ class MainViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             repository.local.deleteAllExpenses()
         }
+    }
+
+    fun checkIfDatabaseEmpty(expenseList: List<Expense>) {
+        emptyDatabase.value = expenseList.isEmpty()
     }
 
 }

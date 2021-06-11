@@ -30,6 +30,8 @@ class HomeFragment : Fragment() {
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
+        binding.viewmodel = mainViewModel
+
         binding.floatingActionButton.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_createExpenseFragment)
         }
@@ -45,6 +47,7 @@ class HomeFragment : Fragment() {
     // Function for observing the viewmodel and setting the appropriate data for the adapter and views
     private fun observeViewModel() {
         mainViewModel.getAllExpenses.observe(viewLifecycleOwner, { data ->
+            mainViewModel.checkIfDatabaseEmpty(data)
             data?.let {
                 expenseAdapter.setData(data)
             }

@@ -11,4 +11,5 @@
     <dimen name="margin_medium">16dp</dimen>
     <dimen name="text_size_time">16sp</dimen>
     <dimen name="text_size_item">20sp</dimen>
+    <dimen name="no_data_margintop">12dp</dimen>
 </resources>

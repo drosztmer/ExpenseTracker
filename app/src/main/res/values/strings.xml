@@ -12,4 +12,5 @@
     <string name="no">No</string>
     <string name="delete_everything">Delete everything?</string>
     <string name="delete_all_expenses">Delete all expenses?</string>
+    <string name="no_entries">No entries</string>
 </resources>
