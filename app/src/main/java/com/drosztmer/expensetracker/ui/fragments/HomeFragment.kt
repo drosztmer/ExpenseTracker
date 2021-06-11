@@ -1,7 +1,9 @@
 package com.drosztmer.expensetracker.ui.fragments
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -43,7 +45,9 @@ class HomeFragment : Fragment() {
     // Function for observing the viewmodel and setting the appropriate data for the adapter and views
     private fun observeViewModel() {
         mainViewModel.getAllExpenses.observe(viewLifecycleOwner, { data ->
-            expenseAdapter.setData(data)
+            data?.let {
+                expenseAdapter.setData(data)
+            }
         })
         mainViewModel.getSum.observe(viewLifecycleOwner, { data ->
             val sum = data ?: 0
@@ -64,6 +68,29 @@ class HomeFragment : Fragment() {
     // Inflating the menu with the delete all option
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.home_fragment_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_delete_all -> confirmRemoval()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun confirmRemoval() {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setPositiveButton(getString(R.string.yes)) { _, _ ->
+            mainViewModel.deleteAllExpenses()
+            Toast.makeText(
+                    requireContext(),
+                    "Successfully deleted all expenses!",
+                    Toast.LENGTH_SHORT
+            ).show()
+        }
+        builder.setNegativeButton(getString(R.string.no)) { _, _ -> }
+        builder.setTitle(getString(R.string.delete_everything))
+        builder.setMessage(getString(R.string.delete_all_expenses))
+        builder.create().show()
     }
 
     // Making binding null to avoid memory leak

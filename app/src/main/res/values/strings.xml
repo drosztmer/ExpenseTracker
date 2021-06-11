@@ -8,4 +8,8 @@
     <string name="price">Price</string>
     <string name="save">Save</string>
     <string name="expense_Added_succesfully">Expense added successfully!</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="delete_everything">Delete everything?</string>
+    <string name="delete_all_expenses">Delete all expenses?</string>
 </resources>
